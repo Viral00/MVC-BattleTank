@@ -2,13 +2,10 @@
 
 public class TankModel
 {
-    public TankModel(float speed, float turnSmoothtime)
+    public TankModel(float speed)
     {
         Speed = speed;
-        TurnSmoothtime = turnSmoothtime;
     }
-
     public float Speed { get; }
-    public float TurnSmoothtime { get; }
 }
     

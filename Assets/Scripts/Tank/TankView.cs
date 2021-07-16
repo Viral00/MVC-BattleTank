@@ -2,10 +2,11 @@
 
 public class TankView: MonoBehaviour
 {
-    public CharacterController Controller;
-    public Transform Cam;
+    //public CharacterController Controller;
+    //public Transform Cam;
     public TankController tankcontroller;
-    private float turnSmoothVelocity;
+    //private float turnSmoothVelocity;
+    private Rigidbody rb;
 
     public TankView(TankController tankController)
     {
@@ -13,12 +14,15 @@ public class TankView: MonoBehaviour
     }
     public TankController TankController { get; }
 
-    private void Update()
+    public void Start()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal1");
-        float vertical = Input.GetAxisRaw("Vertical1");
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
 
-        tankcontroller.TankMovement(horizontal, vertical, Cam, transform, turnSmoothVelocity, Controller);
-        
+    private void FixedUpdate()
+    {
+        float horizontal = Input.GetAxis("Horizontal1");
+        float vertical = Input.GetAxis("Vertical1");
+        tankcontroller.TankMovement(horizontal, vertical, rb, transform);
     }
 }
