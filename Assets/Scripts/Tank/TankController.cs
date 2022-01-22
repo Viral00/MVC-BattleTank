@@ -14,14 +14,22 @@ public class TankController
     public TankView TankView { get; }
 
 
-    public void TankMovement(float horizontal, float vertical, Rigidbody rb, Transform transform)
+    public void TankMovement(float vertical, Rigidbody rb, Transform transform)
     {
         var pos = transform.forward * vertical * TankModel.Speed * Time.deltaTime;
         rb.MovePosition(rb.position + pos);
 
-        /*Vector3 inputVector = new Vector3(horizontal * TankModel.Speed, rb.velocity.y, vertical * TankModel.Speed).normalized;
-        transform.LookAt(transform.position + new Vector3(inputVector.x, 0f, inputVector.z));
-        rb.velocity = inputVector* Time.deltaTime;*/
+    }
+
+    public void TankRotation(Vector3 _rotation, Transform transform1)
+    {
+        if (Input.GetKey(KeyCode.D))
+            _rotation = Vector3.up;
+        else if (Input.GetKey(KeyCode.A))
+            _rotation = Vector3.down;
+        else _rotation = Vector3.zero;
+
+        transform1.Rotate(_rotation * TankModel.RotationSpeed * Time.deltaTime);
     }
 
 }

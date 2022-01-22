@@ -7,6 +7,7 @@ public class TankView: MonoBehaviour
     public TankController tankcontroller;
     //private float turnSmoothVelocity;
     private Rigidbody rb;
+    private Vector3 rotate;
 
     public TankView(TankController tankController)
     {
@@ -21,8 +22,8 @@ public class TankView: MonoBehaviour
 
     private void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal1");
         float vertical = Input.GetAxis("Vertical1");
-        tankcontroller.TankMovement(horizontal, vertical, rb, transform);
+        tankcontroller.TankMovement(vertical, rb, transform);
+        tankcontroller.TankRotation(rotate, transform);
     }
 }
