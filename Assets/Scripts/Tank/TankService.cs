@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class TankService : MonoSingleton<TankService>
 {
     public TankView tankprefab;
-
     
     public void Start()
     {

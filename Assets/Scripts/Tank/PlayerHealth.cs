@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -8,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public PlayerHealthBar healthBar;
     private int maxHealth = 6;
     private int currentHealth;
+    public event Action TankWin;
 
     private void Start()
     {
@@ -38,5 +38,6 @@ public class PlayerHealth : MonoBehaviour
         GameObject tankExplodeEffect = Instantiate(ExplodeEffect, transform.position, Quaternion.identity);
         Destroy(tankExplodeEffect, 3f);
         Destroy(gameObject);
+        TankWin?.Invoke();  
     }
 }

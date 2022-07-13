@@ -2,10 +2,7 @@
 
 public class TankView: MonoBehaviour
 {
-    //public CharacterController Controller;
-    //public Transform Cam;
     public TankController tankcontroller;
-    //private float turnSmoothVelocity;
     private Rigidbody rb;
     private Vector3 rotate;
 
